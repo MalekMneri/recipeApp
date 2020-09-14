@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent  {
-  collapsed = true;
+  collapsed = false;
+  @Output() pageToShow = new EventEmitter<string>();
+
+  // tslint:disable-next-line:typedef
+ menuClicked(passedValue: string){
+  this.pageToShow.emit(passedValue);
+}
 }
