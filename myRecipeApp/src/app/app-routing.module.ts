@@ -9,20 +9,24 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/recipes', pathMatch: 'full' },
-  {path: 'shoppingList',
+  {
+    path: 'shoppingList',
     component: ShoppingListComponent,
-    children: [ { path: 'new', component: ShoppingEditComponent } ]
+    children: [{ path: 'new', component: ShoppingEditComponent }],
   },
-  {path: 'recipes',
+  {
+    path: 'recipes',
     component: RecipesComponent,
-    children: [{ path: '', component: RecipeEmptyComponent },
+    children: [
+      { path: '', component: RecipeEmptyComponent },
       { path: 'new', component: RecipeEditComponent },
       { path: ':id', component: RecipeDetailComponent },
-      { path: ':id/edit', component: RecipeEditComponent }
-      ]}
+      { path: ':id/edit', component: RecipeEditComponent },
+    ],
+  },
 ];
 @NgModule({
-  imports: [ RouterModule.forRoot(appRoutes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
